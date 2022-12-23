@@ -6,6 +6,8 @@
     "@polkadot/api": "^9.10.2",
     "@polkadot/util": "^10.2.1",
     "@polkadot/util-crypto": "^10.2.1",
+    "@reef-defi/api": "^1.1.0",
+    "@reef-defi/util": "^7.8.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Web3Auth } from "@web3auth/modal";
 import { CHAIN_NAMESPACES, SafeEventEmitterProvider } from "@web3auth/base";
-import RPC from "./algorandRPC";
-import reefRPC from "./reefRPC";
+// import RPC from "./algorandRPC";
+import RPC from "./reefRPC";
 import "./App.css";
 
 const clientId =
@@ -81,19 +81,9 @@ function App() {
       uiConsole("provider not initialized yet");
       return;
     }
-    const rpc = new reefRPC(provider as SafeEventEmitterProvider);
+    const rpc = new RPC(provider as SafeEventEmitterProvider);
     const reefKeypair = await rpc.getReefKeyPair();
     uiConsole("Keypair", reefKeypair);
-  };
-
-  const onGetAlgorandKeypair = async () => {
-    if (!provider) {
-      uiConsole("provider not initialized yet");
-      return;
-    }
-    const rpc = new RPC(provider as SafeEventEmitterProvider);
-    const algorandKeypair = await rpc.getAlgorandKeyPair();
-    uiConsole("Keypair", algorandKeypair);
   };
 
   const getAccounts = async () => {
@@ -113,11 +103,7 @@ function App() {
     }
     const rpc = new RPC(provider);
     const balance = await rpc.getBalance();
-    uiConsole(
-      "Balance",
-      balance,
-      "You can get testnet funds from https://bank.testnet.algorand.network/"
-    );
+    uiConsole("Balance", balance);
   };
 
   const signMessage = async () => {
@@ -166,11 +152,6 @@ function App() {
           </button>
         </div>
         <div>
-          <button onClick={onGetAlgorandKeypair} className="card">
-            Get Algorand Keypair
-          </button>
-        </div>
-        <div>
           <button onClick={getAccounts} className="card">
             Get Accounts
           </button>
@@ -214,7 +195,7 @@ function App() {
         <a target="_blank" href="http://web3auth.io/" rel="noreferrer">
           Web3Auth{" "}
         </a>
-        & ReactJS Algorand Example
+        & ReactJS Reef Example
       </h1>
 
       <div className="grid">{provider ? loggedInView : unloggedInView}</div>
